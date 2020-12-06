@@ -5,3 +5,4 @@ El agrupamiento se realiza minimizando la suma de distancias entre cada objeto(p
 Se suele usar la distancia cuadrática.
 
 https://raw.github.com/LuisAlexisSalazar/k-means/master/img/example.png
+https://raw.githubusercontent.com/parzibyte/WaterPy/master/assets/ImagenV1.png
