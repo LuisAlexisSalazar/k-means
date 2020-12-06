@@ -4,8 +4,5 @@ K-means es un algoritmo de clasificación no supervisada (clusterización) que a
 El agrupamiento se realiza minimizando la suma de distancias entre cada objeto(punto) y el centroide de su grupo o cluster. 
 Se suele usar la distancia cuadrática.
 
-https://github.com/LuisAlexisSalazar/k-means/issues/1#issue-757988678
 
-
-https://raw.github.com/LuisAlexisSalazar/k-means/master/img/example.png
-https://raw.githubusercontent.com/parzibyte/WaterPy/master/assets/ImagenV1.png
+![example](https://user-images.githubusercontent.com/42578741/101288577-53444480-37c5-11eb-9acc-3f463917ca4e.png)
