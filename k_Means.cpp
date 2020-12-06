@@ -11,7 +11,7 @@
 
 
 
-int cantidad_registros = 1000;
+int cantidad_registros = 100000;
 
 vector<CPunto*> puntos;
 
