@@ -11,7 +11,7 @@
 
 
 
-int cantidad_registros = 100;
+int cantidad_registros = 1000;
 
 vector<CPunto*> puntos;
 
@@ -38,7 +38,7 @@ void readcsv() {
 
     puntos.resize(cantidad_registros);
     getline(file, line);
-    //cout << line << endl;
+    cout << line << endl;
 
 
 
@@ -46,6 +46,7 @@ void readcsv() {
     getline(file, line);
     stringstream temp_line(line);
     string temp_dato;
+    cout << line << endl;
     for (int j = 0; j < 7; j++) {
         getline(temp_line, temp_dato, ',');
         if (j == 5) {
@@ -79,7 +80,7 @@ void readcsv() {
             getline(lineStream, dato, ',');
             
             if (j == 5) {
-                //cout << dato << endl;
+                cout << dato << endl;
                 x = stod(dato);
 
                 if (limite_superior_x < x)
@@ -90,7 +91,7 @@ void readcsv() {
             }
 
             else if(j==6)  {
-                //cout << dato << endl;
+                cout << dato << endl;
                 y = stod(dato);
 
                 if (limite_superior_y < y)
@@ -106,6 +107,86 @@ void readcsv() {
     }
 }
 
+//sample.csv
+void readcsv2() {
+    string line;
+    ifstream file("sample.csv");
+
+    puntos.resize(cantidad_registros);
+    getline(file, line);
+    getline(file, line);
+    
+
+    //Primer Punto
+    getline(file, line);
+    stringstream temp_lines(line);
+    string collu;
+    long double t_x, t_y;
+    getline(temp_lines, collu, ',');
+    getline(temp_lines, collu, ',');
+    getline(temp_lines, collu, ',');
+
+    getline(temp_lines, collu, ',');
+    getline(temp_lines, collu, ',');
+    getline(temp_lines, collu, ',');
+
+    stringstream ss;
+    ss << collu;
+    ss >> t_x;
+    getline(temp_lines, collu, ',');
+    stringstream ss2;
+    ss2 << collu;
+    ss2 >> t_y;
+    puntos[0] = new CPunto(t_x, t_y);
+    //----------------------
+    
+
+    for (int i = 1; i < cantidad_registros; i++)
+    {
+        getline(file, line);
+
+        stringstream lines(line);
+
+        string col;
+
+        long double x, y;
+
+        getline(lines, col, ',');
+        getline(lines, col, ',');
+        getline(lines, col, ',');
+
+        getline(lines, col, ',');
+        getline(lines, col, ',');
+        getline(lines, col, ',');
+
+        stringstream ss;
+        ss << col;
+        ss >> x;
+  
+
+        getline(lines, col, ',');
+        stringstream ss2;
+        ss2 << col;
+        ss2 >> y;
+
+
+        if (limite_superior_x < x)
+            limite_superior_x = x;
+
+        if (x < limite_inferior_x)
+            limite_inferior_x = x;
+        
+        if (limite_superior_y < y)
+            limite_superior_y = y;
+
+        if (y < limite_inferior_y)
+            limite_inferior_y = y;
+
+
+        //cout << y << '\n';
+        puntos[i] = new CPunto(x, y);
+    }
+}
 
 void print_puntos() {
     for (int i = 0; i < cantidad_registros; i++) {
@@ -369,22 +450,15 @@ void Dibujar() {
 
 
 
-void Llenar_puntos() {
-    srand(time(NULL));
-    //ESCOGEMOS LOS CLUSTER EN PUNTOS RANDOM DE NUESTRO ESPACIO
-    for (int i = 0; i < k; ++i)
-    {
-        centros.push_back((*pntos)[rand() % n]);
-    }
-}
-
 int main()
 {
-    //readcsv();
+    readcsv2();
+    print_puntos();
     k_means(7);
     print_limites();
     print_centroide();
     Dibujar();
+    
 
     return 0;
 }
